@@ -1,4 +1,4 @@
-Installing OpenTEE on Ubuntu-Emulator (Ubuntu Phone)
+# Installing OpenTEE on Ubuntu-Emulator (Ubuntu Phone)
 
 <a href="https://scan.coverity.com/projects/1nquisit0r-ubuntu-phone">
   <img alt="Coverity Scan Build Status"
