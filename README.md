@@ -44,18 +44,14 @@ Systmes and Setting > About this phone > Developer Mode
 ```   
 
 Then open a new terminal window/tab and connect to the inistance/phone:
-```
-adb shell
-
-```
+``` adb shell
 
 Installing OpenTEE
 ------
 The instructions here on how to install OpenTEE were taken from the official <a href="https://github.com/Open-TEE/project" target="_blank">OpenTEE Documents page </a>.
 
-```
-sudo apt-get install git curl pkg-config build-essential uuid-dev libssl-dev libglu1-mesa-dev libelfg0-dev mesa-common-dev libfuse-dev
-```
+``` sudo apt-get install git curl pkg-config build-essential uuid-dev libssl-dev libglu1-mesa-dev libelfg0-dev mesa-common-dev libfuse-dev
+
 If you have followed this tutorial to the letter, then the password is: 
 ```
 0000
