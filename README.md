@@ -32,8 +32,8 @@ It is worth noting, that the ARM architecture is *painfully slow* for the emulat
 
 However, the whole purpose of this installation for me was to see if we can run OpenTEE on the Ubuntu Phone which has ARM `Quad Core Cortex A7`.
 The phones can be found here: 
-<a href="http://www.store.bq.com/gl/ubuntu-edition-e5" target="_blank">Aquaris E5 HD Ubuntu Edition</a>
-<a href="http://www.store.bq.com/gl/ubuntu-edition-e-4-5" target="_blank">Aquaris E4.5 Ubuntu Edition</a>
+- <a href="http://www.store.bq.com/gl/ubuntu-edition-e5" target="_blank">Aquaris E5 HD Ubuntu Edition</a>
+- <a href="http://www.store.bq.com/gl/ubuntu-edition-e-4-5" target="_blank">Aquaris E4.5 Ubuntu Edition</a>
 We have also set the default sudo password on the inistance as `0000`, if you do not provide it with a password it will return some error.
 
 Running the Emulator
