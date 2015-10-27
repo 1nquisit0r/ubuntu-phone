@@ -75,7 +75,7 @@ Create a directory for OpenTEE files:
 mkdir Open-TEE
 cd Open-TEE
 ```
-Install **repo**
+## Install repo
 ```
 sudo add-apt-repository ppa:phablet-team/tools
 sudo apt-get update
@@ -91,7 +91,7 @@ chmod +x ~/bin/repo
 ~/bin/repo init -u https://github.com/Open-TEE/manifest.git
 ~/bin/repo sync -j10
 ```
-Install **autotools**
+## Install autotools & Compile OpenTEE
 ```
 sudo apt-get install autoconf automake libtool
 ```
@@ -103,7 +103,7 @@ cd build
 make
 sudo make install
 ```
-Configure OpenTEE
+## Configure OpenTEE
 
 For reasons unknown to me, you will have to use vim in order to creat/edit the following file:
 ```
@@ -123,13 +123,20 @@ Now press `escape` to finish inserting, then `write` the changes to the file and
 :wq
 ```
 
-Install **qbs**
+## Install qbs & Compile OpenTEE
+I have not had much success with qbs since I get the following error: 
+```
+ERROR: No project file given and none found in current directory.
+```
+Having said that, these are the steps that one needs to take. 
+
+First install qbs:
 ```
 sudo add-apt-repository ppa:qutim/qutim
 sudo apt-get update
 sudo apt-get install qbs
 ```
-Please note, if you simply do `sudo apt-get install qbs`, it will install QBS version 1.3.3+dfsg-4 which will not work. 
+Please note, if you simply do `sudo apt-get install qbs`, it will install QBS version 1.3.3+dfsg-4 which will give you errors (not that I got anywhere with this). 
 
 Configure **qbs**
 ```
@@ -141,3 +148,4 @@ Compile uisng **qbs**
 ```
 qbs debug
 ```
+I had to stop here, as I could not go any further. 
