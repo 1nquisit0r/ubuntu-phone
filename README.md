@@ -12,7 +12,7 @@ Installing the pre-built emulator
 ------
 
 First update your system:
- ```
+```
  sudo apt-get update
 ```
 
@@ -25,15 +25,9 @@ sudo apt-get install ubuntu-emulator
 Then create an inistance (virtual phone)
 
 ```
-sudo ubuntu-emulator create --arch=armhf arm-sample --password=0000
+sudo ubuntu-emulator create --arch=i386 x86-sample --password=0000
 ```
-The default architecture is ARM, but if you are interested in installing the emulator on X86 architecture, then you can change `armhf` to `i386`. 
-It is worth noting, that the ARM architecture is *painfully slow* for the emulator to boot and load. From what I have read online, most people go for `--arch=i386` because it is much faster.
-
-However, the whole purpose of this installation for me was to see if we can run OpenTEE on the Ubuntu Phone which has ARM `Quad Core Cortex A7`.
-The phones can be found here: 
-- <a href="http://www.store.bq.com/gl/ubuntu-edition-e5" target="_blank">Aquaris E5 HD Ubuntu Edition</a>
-- <a href="http://www.store.bq.com/gl/ubuntu-edition-e-4-5" target="_blank">Aquaris E4.5 Ubuntu Edition</a>
+If you want to install it on ARM architecture, then change the `i386` to `armhf`, but be warned, the emulator will be *painfully slow*. 
 
 We have also set the default sudo password on the inistance as `0000`, if you do not provide it with a password it will return some error.
 
@@ -51,7 +45,7 @@ Then open a new terminal window/tab and connect to the inistance/phone:
 ```
 adb shell
 ```
-If you get any problems with the device being offline, then you will need to turn on the developer mode.
+If you get any problems with the device being offline, then you will need to turn on the developer mode on the virtualised Ubuntu Phone.
 ```
 Systmes and Setting > About this phone > Developer Mode
 ```  
@@ -64,7 +58,10 @@ If you have followed this tutorial to the letter, then the password is:
 ```
 0000
 ```
-
+If you decided to upgrade as well, then you must tell apt to hold the `bluez` package since it will halt the upgrade for reasons unknown to me. 
+```
+sudo apt-mark hold bluz
+```
 Installing OpenTEE
 ------
 The instructions here on how to install OpenTEE were taken from the official <a href="https://github.com/Open-TEE/project" target="_blank">OpenTEE Project Documentation </a>.
@@ -78,13 +75,42 @@ Set up git global configuration:
 git config --global user.name "Firstname Lastname"
 git config --global user.email "name@example.com"
 ```
-Install `repo`
+Create a directory for OpenTEE files:
 ```
-mkdir -p ~/bin
+mkdir Open-TEE
+cd Open-TEE
+```
+Install **repo**
+```
+mkdir ~/bin
 curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
 chmod +x ~/bin/repo
+sudo add-apt-repository ppa:phablet-team/tools
+sudo apt-get update
+sudo apt-get install phablet-tools android-tools-adb android-tools-fastboot
+
+Get repo to fetch the OpenTEE manifest
 ```
-Install `qbs`
+~/bin/repo init -u https://github.com/Open-TEE/manifest.git
+~/bin/repo sync -j10
 ```
+```
+Install **qbs**
+```
+sudo add-apt-repository ppa:qutim/qutim
+sudo apt-get update
 sudo apt-get install qbs
+```
+Please note, if you simply do `sudo apt-get install qbs`, it will install QBS version 1.3.3+dfsg-4 which will not work. 
+```
+qbs detect-toolchains
+```
+Error in settings migration:  "Could not copy file '/home/phablet/.config/QtProject/qbs/profiles' to '/home/phablet/.config/QtProject/qbs/1.5.0/profiles'. Cannot open /home/phablet/.config/QtProject/qbs/profiles for input"
+ERROR: Unknown or empty profile 'gcc'.
+phablet@ubuntu-phablet:~$ 
+
+
+Install **autotools**
+```
+sudo apt-get install autoconf automake libtool
 ```
