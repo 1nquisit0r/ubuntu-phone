@@ -85,7 +85,7 @@ Install **repo**
 sudo add-apt-repository ppa:phablet-team/tools
 sudo apt-get update
 sudo apt-get install phablet-tools android-tools-adb android-tools-fastboot
-rm -r /home/phablet/.repo
+sudo rm -r /home/phablet/.repo
 ```
 
 Get repo to fetch the OpenTEE manifest
@@ -103,9 +103,13 @@ sudo apt-get update
 sudo apt-get install qbs
 ```
 Please note, if you simply do `sudo apt-get install qbs`, it will install QBS version 1.3.3+dfsg-4 which will not work. 
+Configure qbs
 ```
 qbs detect-toolchains
+qbs config --list profiles
+qbs config defaultProfile gcc
 ```
+
 Error in settings migration:  "Could not copy file '/home/phablet/.config/QtProject/qbs/profiles' to '/home/phablet/.config/QtProject/qbs/1.5.0/profiles'. Cannot open /home/phablet/.config/QtProject/qbs/profiles for input"
 ERROR: Unknown or empty profile 'gcc'.
 phablet@ubuntu-phablet:~$ 
