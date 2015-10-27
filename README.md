@@ -117,8 +117,8 @@ sudo vim /etc/opentee.conf
 Not sure why, but the `-` is missing in the `Open-TEE`, so we have to set the paths as follows using vim. First press the key `i` in order to insert/add to the file. Then copy and paste the following: 
 ```
 [PATHS]
-ta_dir_path = /opt/OpenTEE/lib/TAs
-core_lib_path = /opt/OpenTEE/lib
+ta_dir_path = /opt/OpenTee/lib/TAs
+core_lib_path = /opt/OpenTee/lib
 subprocess_manager = libManagerApi.so
 subprocess_launcher = libLauncherApi.so
 ```
