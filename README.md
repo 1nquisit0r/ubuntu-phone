@@ -82,18 +82,19 @@ cd Open-TEE
 ```
 Install **repo**
 ```
-mkdir ~/bin
-curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
-chmod +x ~/bin/repo
 sudo add-apt-repository ppa:phablet-team/tools
 sudo apt-get update
 sudo apt-get install phablet-tools android-tools-adb android-tools-fastboot
+rm -r /home/phablet/.repo
+```
 
 Get repo to fetch the OpenTEE manifest
 ```
+mkdir ~/bin
+curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
+chmod +x ~/bin/repo
 ~/bin/repo init -u https://github.com/Open-TEE/manifest.git
 ~/bin/repo sync -j10
-```
 ```
 Install **qbs**
 ```
