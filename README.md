@@ -91,7 +91,7 @@ chmod +x ~/bin/repo
 ~/bin/repo init -u https://github.com/Open-TEE/manifest.git
 ~/bin/repo sync -j10
 ```
-## Install autotools & Compile OpenTEE
+## Install autotools & compile OpenTEE
 ```
 sudo apt-get install autoconf automake libtool
 ```
@@ -103,7 +103,7 @@ cd build
 make
 sudo make install
 ```
-## Configure OpenTEE
+### Configure OpenTEE
 
 For reasons unknown to me, you will have to use vim in order to creat/edit the following file:
 ```
@@ -123,7 +123,7 @@ Now press `escape` to finish inserting, then `write` the changes to the file and
 :wq
 ```
 
-## Install qbs & Compile OpenTEE
+## Install qbs & compile OpenTEE
 I have not had much success with qbs since I get the following error: 
 ```
 ERROR: No project file given and none found in current directory.
