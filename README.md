@@ -109,6 +109,7 @@ make
 sudo make install
 ```
 Configure OpenTEE
+
 For reasons unknown to me, you will have to use vim in order to creat/edit the following file:
 ```
 sudo apt-get install vim
