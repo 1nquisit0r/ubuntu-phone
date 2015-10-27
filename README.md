@@ -96,31 +96,6 @@ chmod +x ~/bin/repo
 ~/bin/repo init -u https://github.com/Open-TEE/manifest.git
 ~/bin/repo sync -j10
 ```
-Install **qbs**
-```
-sudo add-apt-repository ppa:qutim/qutim
-sudo apt-get update
-sudo apt-get install qbs
-```
-Please note, if you simply do `sudo apt-get install qbs`, it will install QBS version 1.3.3+dfsg-4 which will not work. 
-
-Configure **qbs**
-```
-qbs detect-toolchains
-qbs config --list profiles
-qbs config defaultProfile gcc
-```
-Compile uisng **qbs**
-```
-qbs debug
-```
-
-
-Error in settings migration:  "Could not copy file '/home/phablet/.config/QtProject/qbs/profiles' to '/home/phablet/.config/QtProject/qbs/1.5.0/profiles'. Cannot open /home/phablet/.config/QtProject/qbs/profiles for input"
-ERROR: Unknown or empty profile 'gcc'.
-phablet@ubuntu-phablet:~$ 
-
-
 Install **autotools**
 ```
 sudo apt-get install autoconf automake libtool
@@ -139,13 +114,38 @@ For reasons unknown to me, you will have to use vim in order to creat/edit the f
 sudo apt-get install vim
 sudo vim /etc/opentee.conf
 ```
-Not sure why, but the `-` is missing in the `Open-TEE`, so we have to set the paths as follows:
+Not sure why, but the `-` is missing in the `Open-TEE`, so we have to set the paths as follows using vim. First press the key `i` in order to insert/add the setting: 
 ```
 i
+```
+Then copy and paste the following: 
+```
 [PATHS]
 ta_dir_path = /opt/OpenTEE/lib/TAs
 core_lib_path = /opt/OpenTEE/lib
 subprocess_manager = libManagerApi.so
 subprocess_launcher = libLauncherApi.so
+```
+Now press `escape` to finish inserting, then `write` the changes to the file and `quit` vim editor. 
+```
 :wq
+```
+
+Install **qbs**
+```
+sudo add-apt-repository ppa:qutim/qutim
+sudo apt-get update
+sudo apt-get install qbs
+```
+Please note, if you simply do `sudo apt-get install qbs`, it will install QBS version 1.3.3+dfsg-4 which will not work. 
+
+Configure **qbs**
+```
+qbs detect-toolchains
+qbs config --list profiles
+qbs config defaultProfile gcc
+```
+Compile uisng **qbs**
+```
+qbs debug
 ```
