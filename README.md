@@ -110,7 +110,7 @@ For reasons unknown to me, you will have to use vim in order to creat/edit the f
 sudo apt-get install vim
 sudo vim /etc/opentee.conf
 ```
-Not sure why, but the `-` is missing in the `Open-TEE`, so we have to set the paths as follows using vim. First press the key `i` in order to insert/add to the file. Then copy and paste the following: 
+Not sure why, but the `-` is missing in the `Open-TEE`, so we have to set the paths as follows using vim. First if you are not familiar with vim, then start by pressing the key `i` in order to insert/add to the file. Then copy and paste the following: 
 ```
 [PATHS]
 ta_dir_path = /opt/OpenTee/lib/TAs
@@ -118,9 +118,19 @@ core_lib_path = /opt/OpenTee/lib
 subprocess_manager = libManagerApi.so
 subprocess_launcher = libLauncherApi.so
 ```
-Now press `escape` to finish inserting, then `write` the changes to the file and `quit` vim editor by typing the following: 
+Now press `escape` to finish inserting, then `write` the changes to the file and `quit` vim editor by typing `:wq` and press entre.
+
+Now test if everything went smoothly:
 ```
-:wq
+/opt/Open-TEE/bin/opentee-engine
+```
+See if the processes are running: 
+```
+ps waux | grep tee
+```
+You should see something like this: 
+```
+
 ```
 
 ## Install qbs & compile OpenTEE
