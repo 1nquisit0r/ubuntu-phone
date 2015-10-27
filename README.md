@@ -122,7 +122,7 @@ Now press `escape` to finish inserting, then `write` the changes to the file and
 
 Now test if everything went smoothly:
 ```
-/opt/Open-TEE/bin/opentee-engine
+/opt/OpenTee/bin/opentee-engine
 ```
 See if the processes are running: 
 ```
@@ -130,7 +130,9 @@ ps waux | grep tee
 ```
 You should see something like this: 
 ```
-
+phablet   9251  0.0  0.0  10904   892 ?        Sl   04:49   0:00 tee_manager                    
+phablet   9252  0.0  0.1   4632  1292 ?        S    04:49   0:00 tee_launcher                   
+phablet  10682  0.0  0.0   5744   868 pts/16   S+   04:51   0:00 grep --color=auto tee
 ```
 
 ## Install qbs & compile OpenTEE
