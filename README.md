@@ -103,7 +103,8 @@ sudo apt-get update
 sudo apt-get install qbs
 ```
 Please note, if you simply do `sudo apt-get install qbs`, it will install QBS version 1.3.3+dfsg-4 which will not work. 
-Configure qbs
+
+Configure **qbs**
 ```
 qbs detect-toolchains
 qbs config --list profiles
