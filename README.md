@@ -110,6 +110,11 @@ qbs detect-toolchains
 qbs config --list profiles
 qbs config defaultProfile gcc
 ```
+Compile uisng **qbs**
+```
+qbs debug
+```
+
 
 Error in settings migration:  "Could not copy file '/home/phablet/.config/QtProject/qbs/profiles' to '/home/phablet/.config/QtProject/qbs/1.5.0/profiles'. Cannot open /home/phablet/.config/QtProject/qbs/profiles for input"
 ERROR: Unknown or empty profile 'gcc'.
@@ -119,4 +124,28 @@ phablet@ubuntu-phablet:~$
 Install **autotools**
 ```
 sudo apt-get install autoconf automake libtool
+```
+Compile using **autotools**
+```
+mkdir build
+cd build
+../autogen.sh
+make
+sudo make install
+```
+Configure OpenTEE
+For reasons unknown to me, you will have to use vim in order to creat/edit the following file:
+```
+sudo apt-get install vim
+sudo vim /etc/opentee.conf
+```
+Not sure why, but the `-` is missing in the `Open-TEE`, so we have to set the paths as follows:
+```
+i
+[PATHS]
+ta_dir_path = /opt/OpenTEE/lib/TAs
+core_lib_path = /opt/OpenTEE/lib
+subprocess_manager = libManagerApi.so
+subprocess_launcher = libLauncherApi.so
+:wq
 ```
