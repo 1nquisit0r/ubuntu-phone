@@ -62,11 +62,12 @@ If you decided to upgrade as well, then you must tell apt to hold the `bluez` pa
 ```
 sudo apt-mark hold bluz
 ```
-#Installing OpenTEE
-
+Installing OpenTEE
+------
 The instructions here on how to install OpenTEE were taken from the official <a href="https://github.com/Open-TEE/project" target="_blank">OpenTEE Project Documentation </a>.
 
-Then install the **Prerequisites** for the OpenTEE:
+#Installing prerequisites for the OpenTEE
+
 ``` 
 sudo apt-get install git curl pkg-config build-essential uuid-dev libssl-dev libglu1-mesa-dev libelfg0-dev mesa-common-dev libfuse-dev
 ```
