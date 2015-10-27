@@ -114,11 +114,7 @@ For reasons unknown to me, you will have to use vim in order to creat/edit the f
 sudo apt-get install vim
 sudo vim /etc/opentee.conf
 ```
-Not sure why, but the `-` is missing in the `Open-TEE`, so we have to set the paths as follows using vim. First press the key `i` in order to insert/add the setting: 
-```
-i
-```
-Then copy and paste the following: 
+Not sure why, but the `-` is missing in the `Open-TEE`, so we have to set the paths as follows using vim. First press the key `i` in order to insert/add to the file. Then copy and paste the following: 
 ```
 [PATHS]
 ta_dir_path = /opt/OpenTEE/lib/TAs
@@ -126,7 +122,7 @@ core_lib_path = /opt/OpenTEE/lib
 subprocess_manager = libManagerApi.so
 subprocess_launcher = libLauncherApi.so
 ```
-Now press `escape` to finish inserting, then `write` the changes to the file and `quit` vim editor. 
+Now press `escape` to finish inserting, then `write` the changes to the file and `quit` vim editor by typing the following: 
 ```
 :wq
 ```
