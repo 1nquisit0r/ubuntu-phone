@@ -80,7 +80,6 @@ cd Open-TEE
 sudo add-apt-repository ppa:phablet-team/tools
 sudo apt-get update
 sudo apt-get install phablet-tools android-tools-adb android-tools-fastboot
-sudo rm -r /home/phablet/.repo
 ```
 
 Get repo to fetch the OpenTEE manifest
@@ -105,7 +104,7 @@ sudo make install
 ```
 ### Configure OpenTEE
 
-For reasons unknown to me, you will have to use vim in order to creat/edit the following file:
+For reasons unknown to me, `nano` won't do and you will have to use `vim` in order to creat/edit the following file:
 ```
 sudo apt-get install vim
 sudo vim /etc/opentee.conf
