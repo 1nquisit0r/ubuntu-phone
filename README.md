@@ -149,3 +149,4 @@ Compile uisng **qbs**
 qbs debug
 ```
 I had to stop here, as I could not go any further. 
+If you have any suggestions, questions, please feel free to ask.
