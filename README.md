@@ -8,7 +8,7 @@ Installing OpenTEE on Ubuntu-Emulator
 
 The instructions here on how to install Ubuntu-Emulator were taken from the official <a href="https://wiki.ubuntu.com/Touch/Emulator" target="_blank">Ubuntu Wiki page </a>. 
 
-Installing the pre-built emulator
+#Installing the pre-built emulator
 ------
 
 First update your system:
@@ -58,12 +58,8 @@ If you have followed this tutorial to the letter, then the password is:
 ```
 0000
 ```
-If you decided to upgrade as well, then you must tell apt to hold the `bluez` package since it will halt the upgrade for reasons unknown to me. 
-```
-sudo apt-mark hold bluz
-```
-Installing OpenTEE
-------
+#Installing OpenTEE
+---
 The instructions here on how to install OpenTEE were taken from the official <a href="https://github.com/Open-TEE/project" target="_blank">OpenTEE Project Documentation </a>.
 
 Installing prerequisites for the OpenTEE
