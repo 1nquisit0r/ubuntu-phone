@@ -1,13 +1,6 @@
 Installing OpenTEE on Ubuntu-Emulator
 ======
 
-<a href="https://scan.coverity.com/projects/1nquisit0r-ubuntu-phone">
-  <img alt="Coverity Scan Build Status"
-       src="https://scan.coverity.com/projects/6776/badge.svg"/>
-</a>
-
-The instructions here on how to install Ubuntu-Emulator were taken from the official <a href="https://wiki.ubuntu.com/Touch/Emulator" target="_blank">Ubuntu Wiki page </a>. 
-
 #Installing the pre-built emulator
 
 First update your system:
@@ -34,7 +27,7 @@ Running the Emulator
 ------
 In order to run the emulator, the following command need to be executed.
 ```
-ubuntu-emulator run  --scale 0.7 --memory=720 arm-sample
+ubuntu-emulator run  --scale 0.7 --memory=720 x86-sample
 ```
 The `scale` of the phone will be at 70%, I found the scale to be too large for my laptop, but you can change it as you desire. We also instructed the emulator to use the maximum allowed memory by this command `--memory=720`.
 
@@ -109,20 +102,37 @@ For reasons unknown to me, `nano` won't do and you will have to use `vim` in ord
 sudo apt-get install vim
 sudo vim /etc/opentee.conf
 ```
-Not sure why, but the `-` is missing in the `Open-TEE`, so we have to set the paths as follows using vim. First if you are not familiar with vim, then start by pressing the key `i` in order to insert/add to the file. Then copy and paste the following: 
+First if you are not familiar with vim, then start by pressing the key `i` in order to insert/add to the file. Then copy and paste the following: 
 ```
 [PATHS]
-ta_dir_path = /opt/OpenTee/lib/TAs
-core_lib_path = /opt/OpenTee/lib
+ta_dir_path = /home/phablet/Open-TEE/gcc-debug/TAs
+core_lib_path = /home/phablet/Open-TEE/gcc-debug
 subprocess_manager = libManagerApi.so
 subprocess_launcher = libLauncherApi.so
 ```
 Now press `escape` to finish inserting, then `write` the changes to the file and `quit` vim editor by typing `:wq` and press entre.
 
+## Install qbs & compile OpenTEE
+
+First install qt-sdk and qbs:
+```
+sudo apt-get install qt-sdk
+sudo add-apt-repository ppa:qutim/qutim
+sudo apt-get update
+sudo apt-get install qbs
+qbs setup-toolchains --detect
+qbs config defaultProfile gcc
+cd ..
+qbs debug
+```
+Please note, if you simply do `sudo apt-get install qbs`, it will install QBS version 1.3.3+dfsg-4 which will give you errors (not that I got anywhere with this). 
+
 Now test if everything went smoothly:
 ```
-/opt/OpenTee/bin/opentee-engine
+cd gcc-debug
+./open-tee
 ```
+
 See if the processes are running: 
 ```
 ps waux | grep tee
@@ -133,31 +143,8 @@ phablet   9251  0.0  0.0  10904   892 ?        Sl   04:49   0:00 tee_manager
 phablet   9252  0.0  0.1   4632  1292 ?        S    04:49   0:00 tee_launcher                   
 phablet  10682  0.0  0.0   5744   868 pts/16   S+   04:51   0:00 grep --color=auto tee
 ```
-
-## Install qbs & compile OpenTEE
-I have not had much success with qbs since I get the following error: 
+Then you test it by running an app :)
 ```
-ERROR: No project file given and none found in current directory.
+cd gcc-debug
+./conn_test_app
 ```
-Having said that, these are the steps that one needs to take. 
-
-First install qbs:
-```
-sudo add-apt-repository ppa:qutim/qutim
-sudo apt-get update
-sudo apt-get install qbs
-```
-Please note, if you simply do `sudo apt-get install qbs`, it will install QBS version 1.3.3+dfsg-4 which will give you errors (not that I got anywhere with this). 
-
-Configure **qbs**
-```
-qbs detect-toolchains
-qbs config --list profiles
-qbs config defaultProfile gcc
-```
-Compile uisng **qbs**
-```
-qbs debug
-```
-I had to stop here, as I could not go any further. 
-If you have any suggestions, questions, please feel free to ask.
